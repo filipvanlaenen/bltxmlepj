@@ -31,7 +31,7 @@ public abstract class ElementWithElements implements Element {
             for (Element element : elements) {
                 elementStrings.add(element.asString(nextIndent));
             }
-            return indent + "<" + getElementName() + ">\n" + String.join("\n", elementStrings) + "\n" + "</"
+            return indent + "<" + getElementName() + ">\n" + String.join("\n", elementStrings) + "\n" + indent + "</"
                     + getElementName() + ">";
         }
     }
