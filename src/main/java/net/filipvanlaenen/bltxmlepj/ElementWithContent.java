@@ -12,8 +12,7 @@ public abstract class ElementWithContent implements Element {
     /**
      * Constructs an element with a string as its content.
      *
-     * @param content
-     *            A string.
+     * @param content A string.
      */
     protected ElementWithContent(final String content) {
         this.content = content;
@@ -29,19 +28,10 @@ public abstract class ElementWithContent implements Element {
     }
 
     /**
-     * Returns the name of the element.
+     * Escape special XML characters in a string. The special XML characters that will be escaped are <code>&lt;</code>,
+     * <code>&gt;</code> and <code>&amp;</code>.
      *
-     * @return The name of the element.
-     */
-    protected abstract String getElementName();
-
-    /**
-     * Escape special XML characters in a string. The special XML characters that
-     * will be escaped are <code>&lt;</code>, <code>&gt;</code> and
-     * <code>&amp;</code>.
-     *
-     * @param string
-     *            The original text.
+     * @param string The original text.
      * @return The text with special XML characters escaped.
      */
     private String xmlEscape(final String string) {

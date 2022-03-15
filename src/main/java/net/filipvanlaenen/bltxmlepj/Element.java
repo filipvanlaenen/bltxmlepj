@@ -16,9 +16,15 @@ public interface Element {
     /**
      * Returns a string representation of the element with the provided indentation.
      *
-     * @param indent
-     *            The indentation.
+     * @param indent The indentation.
      * @return A string representation of the element with the provided indentation.
      */
     String asString(String indent);
+
+    /**
+     * Returns the name of the element.
+     *
+     * @return The name of the element.
+     */
+    String getElementName();
 }

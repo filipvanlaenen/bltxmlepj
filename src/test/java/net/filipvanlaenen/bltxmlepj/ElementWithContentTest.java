@@ -23,7 +23,7 @@ public class ElementWithContentTest {
         }
 
         @Override
-        protected String getElementName() {
+        public String getElementName() {
             return "e";
         }
     }

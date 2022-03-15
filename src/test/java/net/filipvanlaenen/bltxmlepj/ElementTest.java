@@ -18,6 +18,11 @@ public class ElementTest {
             public String asString(final String indent) {
                 return indent + "foo";
             }
+
+            @Override
+            public String getElementName() {
+                return null;
+            }
         };
         assertEquals("foo", element.asString());
     }
