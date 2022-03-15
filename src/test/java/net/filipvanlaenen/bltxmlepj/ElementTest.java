@@ -9,13 +9,13 @@ import org.junit.jupiter.api.Test;
  */
 public class ElementTest {
     /**
-     * Test verifying that a simple paragraph with text is exported correctly.
+     * Tests that <code>asString</code> uses no indent.
      */
     @Test
-    void simplePWithTextIsConvertedCorrectlyToString() {
+    void asStringUsesNoIndent() {
         Element element = new Element() {
             @Override
-            public String asString(String indent) {
+            public String asString(final String indent) {
                 return indent + "foo";
             }
         };
