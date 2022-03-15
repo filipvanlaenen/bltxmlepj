@@ -17,7 +17,7 @@ public abstract class ElementWithElements implements Element {
      *
      * @param element The element to be added.
      */
-    protected final void add(final Element element) {
+    protected final void addElement(final Element element) {
         elements.add(element);
     }
 

@@ -18,7 +18,7 @@ public class ElementWithElementsTest {
          * @param myElementWithElements The element with elements to be added.
          */
         void addElement(final MyElementWithElements myElementWithElements) {
-            add(myElementWithElements);
+            super.addElement(myElementWithElements);
         }
 
         @Override
