@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -27,7 +26,7 @@ class Attributes {
      *            The string value of the attribute.
      */
     void addStringAttribute(final String name, final String string) {
-        attributes.put(name, new StringAttribute(name, string));
+        attributes.put(name, new StringAttribute(string));
     }
 
     /**
@@ -36,21 +35,22 @@ class Attributes {
      * @return A string representing all the attributes.
      */
     String asString() {
+        if (isEmpty()) {
+            return "";
+        }
+        StringBuilder sb = new StringBuilder();
         Set<String> attributeNameSet = new HashSet<String>();
         attributeNameSet.addAll(attributes.keySet());
         List<String> attributeNameList = new ArrayList<String>(attributeNameSet);
         Collections.sort(attributeNameList);
-        Iterator<String> attributeNameIterator = attributeNameList.iterator();
-        List<String> attributeStrings = new ArrayList<String>();
-        while (attributeNameIterator.hasNext()) {
-            String attributeName = attributeNameIterator.next();
-            attributeStrings.add(attributeName + "=\"" + attributes.get(attributeName).asString() + "\"");
+        for (String attributeName : attributeNameList) {
+            sb.append(" ");
+            sb.append(attributeName);
+            sb.append("=\"");
+            sb.append(attributes.get(attributeName).asString());
+            sb.append("\"");
         }
-        if (attributeStrings.isEmpty()) {
-            return "";
-        } else {
-            return " " + String.join(" ", attributeStrings);
-        }
+        return sb.toString();
     }
 
     boolean isEmpty() {

@@ -5,10 +5,6 @@ package net.filipvanlaenen.bltxmlepj;
  */
 public class StringAttribute implements Attribute {
     /**
-     * The name of the attribute.
-     */
-    private final String name;
-    /**
      * The value of the attribute.
      */
     private final String string;
@@ -16,13 +12,10 @@ public class StringAttribute implements Attribute {
     /**
      * Constructs an attribute with a string value.
      *
-     * @param name
-     *            The name of the attribute.
      * @param string
      *            The string.
      */
-    StringAttribute(final String name, final String string) {
-        this.name = name;
+    StringAttribute(final String string) {
         this.string = string;
     }
 

@@ -41,17 +41,4 @@ public abstract class ElementWithAttributesAndContent implements Element {
                     + getElementName() + ">";
         }
     }
-
-    /**
-     * Escape special XML characters in a string. The special XML characters that
-     * will be escaped are <code>&lt;</code>, <code>&gt;</code> and
-     * <code>&amp;</code>.
-     *
-     * @param string
-     *            The original text.
-     * @return The text with special XML characters escaped.
-     */
-    private String xmlEscape(final String string) {
-        return string.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
-    }
 }
