@@ -1,5 +1,10 @@
 package net.filipvanlaenen.bltxmlepj;
 
+/**
+ * Abstract class providing common functionality for element types with
+ * attributes and content.
+ */
+
 public abstract class ElementWithAttributesAndContent implements Element {
     /**
      * The attributes.
@@ -34,11 +39,20 @@ public abstract class ElementWithAttributesAndContent implements Element {
 
     @Override
     public final String asString(final String indent) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(indent);
+        sb.append("<");
+        sb.append(getElementName());
+        sb.append(attributes.asString());
         if (content == null || content.isEmpty()) {
-            return indent + "<" + getElementName() + attributes.asString() + "/>";
+            sb.append("/>");
         } else {
-            return indent + "<" + getElementName() + attributes.asString() + ">" + xmlEscape(content) + "</"
-                    + getElementName() + ">";
+            sb.append(">");
+            sb.append(xmlEscape(content));
+            sb.append("</");
+            sb.append(getElementName());
+            sb.append(">");
         }
+        return sb.toString();
     }
 }
