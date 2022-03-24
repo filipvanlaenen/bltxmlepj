@@ -9,21 +9,35 @@ import org.junit.jupiter.api.Test;
  */
 public class ElementTest {
     /**
+     * Local subclass of <code>Element</code> for testing purposes.
+     */
+    private static final class MyElement implements Element {
+        @Override
+        public String asString(final String indent) {
+            return indent + "foo";
+        }
+
+        @Override
+        public String getElementName() {
+            return null;
+        }
+    }
+
+    /**
      * Tests that <code>asString</code> uses no indent.
      */
     @Test
     void asStringUsesNoIndent() {
-        Element element = new Element() {
-            @Override
-            public String asString(final String indent) {
-                return indent + "foo";
-            }
-
-            @Override
-            public String getElementName() {
-                return null;
-            }
-        };
+        Element element = new MyElement();
         assertEquals("foo", element.asString());
+    }
+
+    /**
+     * Tests that <code>xmlEscape</code> escapes correctly.
+     */
+    @Test
+    void xmlEscapeEscapesCorrectly() {
+        Element element = new MyElement();
+        assertEquals("&amp;&lt;&gt;", element.xmlEscape("&<>"));
     }
 }
