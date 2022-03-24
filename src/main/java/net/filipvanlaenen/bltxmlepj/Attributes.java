@@ -53,6 +53,11 @@ class Attributes {
         return sb.toString();
     }
 
+    /**
+     * Returns whether the set of attributes is empty.
+     *
+     * @return True if the set of attributes is empty, false otherwise.
+     */
     boolean isEmpty() {
         return attributes.isEmpty();
     }
