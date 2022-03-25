@@ -47,7 +47,7 @@ class Attributes {
             sb.append(" ");
             sb.append(attributeName);
             sb.append("=\"");
-            sb.append(attributes.get(attributeName).asString());
+            sb.append(xmlEscape(attributes.get(attributeName).asString()));
             sb.append("\"");
         }
         return sb.toString();
@@ -60,5 +60,10 @@ class Attributes {
      */
     boolean isEmpty() {
         return attributes.isEmpty();
+    }
+
+    private String xmlEscape(final String string) {
+        return string.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\"",
+                "&quot;");
     }
 }
