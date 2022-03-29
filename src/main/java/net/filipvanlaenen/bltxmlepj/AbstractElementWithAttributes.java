@@ -8,10 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-/**
- * A class helping to export attributes from XML elements to a string.
- */
-class Attributes {
+abstract class AbstractElementWithAttributes implements Element {
     /**
      * A map with all the attributes.
      */
@@ -25,7 +22,7 @@ class Attributes {
      * @param attribute
      *            The the attribute.
      */
-    void addAttribute(final String name, final Attribute attribute) {
+    protected void addAttribute(final String name, final Attribute attribute) {
         attributes.put(name, attribute);
     }
 
@@ -37,7 +34,7 @@ class Attributes {
      * @param value
      *            The enumeration value of the attribute.
      */
-    <E extends AttributeValueEnumeration> void addEnumerationAttribute(final String name, final E value) {
+    protected <E extends AttributeValueEnumeration> void addEnumerationAttribute(final String name, final E value) {
         attributes.put(name, new EnumerationAttribute<E>(value));
     }
 
@@ -49,7 +46,7 @@ class Attributes {
      * @param number
      *            The number value of the attribute.
      */
-    void addNumericAttribute(final String name, final Number number) {
+    protected void addNumericAttribute(final String name, final Number number) {
         attributes.put(name, new NumericAttribute(number));
     }
 
@@ -61,17 +58,12 @@ class Attributes {
      * @param string
      *            The string value of the attribute.
      */
-    void addStringAttribute(final String name, final String string) {
+    protected void addStringAttribute(final String name, final String string) {
         attributes.put(name, new StringAttribute(string));
     }
 
-    /**
-     * Converts the set of attributes into a string.
-     *
-     * @return A string representing all the attributes.
-     */
-    String asString() {
-        if (isEmpty()) {
+    protected String getAttributesAsString() {
+        if (attributes.isEmpty()) {
             return "";
         }
         StringBuilder sb = new StringBuilder();
@@ -87,19 +79,5 @@ class Attributes {
             sb.append("\"");
         }
         return sb.toString();
-    }
-
-    /**
-     * Returns whether the set of attributes is empty.
-     *
-     * @return True if the set of attributes is empty, false otherwise.
-     */
-    boolean isEmpty() {
-        return attributes.isEmpty();
-    }
-
-    private String xmlEscape(final String string) {
-        return string.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\"",
-                "&quot;");
     }
 }
