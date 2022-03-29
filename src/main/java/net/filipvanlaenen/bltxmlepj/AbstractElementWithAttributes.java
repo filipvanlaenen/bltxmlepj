@@ -8,6 +8,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * Abstract base class for all element classes with attributes.
+ */
 abstract class AbstractElementWithAttributes implements Element {
     /**
      * A map with all the attributes.
@@ -33,6 +36,8 @@ abstract class AbstractElementWithAttributes implements Element {
      *            The name of the attribute.
      * @param value
      *            The enumeration value of the attribute.
+     * @param <E>
+     *            The enumeration type.
      */
     protected <E extends AttributeValueEnumeration> void addEnumerationAttribute(final String name, final E value) {
         attributes.put(name, new EnumerationAttribute<E>(value));
@@ -62,6 +67,11 @@ abstract class AbstractElementWithAttributes implements Element {
         attributes.put(name, new StringAttribute(string));
     }
 
+    /**
+     * Returns the attributes as a string.
+     *
+     * @return A string representation of the attributes.
+     */
     protected String getAttributesAsString() {
         if (attributes.isEmpty()) {
             return "";

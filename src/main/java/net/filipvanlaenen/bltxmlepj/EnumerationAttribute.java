@@ -1,5 +1,11 @@
 package net.filipvanlaenen.bltxmlepj;
 
+/**
+ * A class representing an enumeration attribute.
+ *
+ * @param <E>
+ *            The enumeration type.
+ */
 public class EnumerationAttribute<E extends AttributeValueEnumeration> implements Attribute {
     /**
      * The value of the attribute.

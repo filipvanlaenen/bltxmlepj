@@ -12,15 +12,6 @@ public class ElementWithElementsTest {
      * Local subclass of <code>ElementWithElements</code> for testing purposes.
      */
     private class MyElementWithElements extends ElementWithElements {
-        /**
-         * Adds an element with elements.
-         *
-         * @param myElementWithElements The element with elements to be added.
-         */
-        void addElement(final MyElementWithElements myElementWithElements) {
-            super.addElement(myElementWithElements);
-        }
-
         @Override
         public String getElementName() {
             return "e";

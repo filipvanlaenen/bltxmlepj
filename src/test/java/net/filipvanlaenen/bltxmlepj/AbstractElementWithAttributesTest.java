@@ -8,9 +8,13 @@ import org.junit.jupiter.api.Test;
  * Unit tests on the <code>AbstractElementWithAttributes</code> interface.
  */
 public class AbstractElementWithAttributesTest {
+    /**
+     * Local subclass of <code>AbstractElementWithAttributes</code> for testing
+     * purposes.
+     */
     private static final class MyAbstractElementWithAttributes extends AbstractElementWithAttributes {
         @Override
-        public String asString(String indent) {
+        public String asString(final String indent) {
             return null;
         }
 
