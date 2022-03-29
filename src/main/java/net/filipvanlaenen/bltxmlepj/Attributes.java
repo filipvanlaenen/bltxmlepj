@@ -30,6 +30,18 @@ class Attributes {
     }
 
     /**
+     * Adds an enumeration attribute to the set of attributes.
+     *
+     * @param name
+     *            The name of the attribute.
+     * @param value
+     *            The enumeration value of the attribute.
+     */
+    <E extends AttributeValueEnumeration> void addEnumerationAttribute(final String name, final E value) {
+        attributes.put(name, new EnumerationAttribute<E>(value));
+    }
+
+    /**
      * Adds a numeric attribute to the set of attributes.
      *
      * @param name

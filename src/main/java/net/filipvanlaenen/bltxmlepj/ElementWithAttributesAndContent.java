@@ -38,6 +38,18 @@ public abstract class ElementWithAttributesAndContent implements Element {
     }
 
     /**
+     * Adds an enumeration attribute to the set of attributes.
+     *
+     * @param name
+     *            The name of the attribute.
+     * @param value
+     *            The enumeration value of the attribute.
+     */
+    protected <E extends AttributeValueEnumeration> void addEnumerationAttribute(final String name, final E value) {
+        attributes.addEnumerationAttribute(name, value);
+    }
+
+    /**
      * Adds a numeric attribute to the set of attributes.
      *
      * @param name
