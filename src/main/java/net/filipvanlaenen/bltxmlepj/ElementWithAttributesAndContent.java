@@ -26,6 +26,30 @@ public abstract class ElementWithAttributesAndContent implements Element {
     }
 
     /**
+     * Adds an attribute to the set of attributes.
+     *
+     * @param name
+     *            The name of the attribute.
+     * @param attribute
+     *            The the attribute.
+     */
+    protected void addAttribute(final String name, final Attribute attribute) {
+        attributes.addAttribute(name, attribute);
+    }
+
+    /**
+     * Adds a numeric attribute to the set of attributes.
+     *
+     * @param name
+     *            The name of the attribute.
+     * @param number
+     *            The number value of the attribute.
+     */
+    protected void addNumericAttribute(final String name, final Number number) {
+        attributes.addNumericAttribute(name, number);
+    }
+
+    /**
      * Adds a string attribute to the set of attributes.
      *
      * @param name
