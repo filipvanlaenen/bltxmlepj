@@ -58,6 +58,18 @@ public class ElementWithAttributesAndMixedContentTest {
     }
 
     /**
+     * Tests that an element with an element with content is exported correctly.
+     */
+    @Test
+    void elementWithElementWithContentIsExportedCorrectly() {
+        MyElementWithAttributesAndMixedContent element = new MyElementWithAttributesAndMixedContent();
+        MyElementWithAttributesAndMixedContent subelement = new MyElementWithAttributesAndMixedContent();
+        subelement.addContent("foo");
+        element.addElement(subelement);
+        assertEquals("<e>\n  <e>foo</e>\n</e>", element.asString());
+    }
+
+    /**
      * Tests that an element with mixed content is exported correctly.
      */
     @Test

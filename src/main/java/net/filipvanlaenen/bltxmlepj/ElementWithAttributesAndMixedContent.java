@@ -60,7 +60,9 @@ public abstract class ElementWithAttributesAndMixedContent extends AbstractEleme
                     }
                 }
             }
-            sb.append(indent);
+            if (containsElementsOnly) {
+                sb.append(indent);
+            }
             sb.append("</");
             sb.append(getElementName());
             sb.append(">");
