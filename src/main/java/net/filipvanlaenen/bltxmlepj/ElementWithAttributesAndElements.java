@@ -7,7 +7,6 @@ import java.util.List;
  * Abstract class providing common functionality for element types with
  * attributes and elements.
  */
-
 public abstract class ElementWithAttributesAndElements extends AbstractElementWithAttributes implements Element {
     /**
      * A list with the elements.
