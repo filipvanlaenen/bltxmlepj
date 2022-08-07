@@ -30,7 +30,7 @@ public abstract class ElementWithAttributesAndMixedContent extends AbstractEleme
      *
      * @param content The string content.
      */
-    protected final void addContent(final String content) {
+    public final void addContent(final String content) {
         parts.add(content);
         containsElementsOnly = false;
     }
