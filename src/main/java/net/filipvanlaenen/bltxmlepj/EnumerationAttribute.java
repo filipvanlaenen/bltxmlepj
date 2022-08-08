@@ -3,8 +3,7 @@ package net.filipvanlaenen.bltxmlepj;
 /**
  * A class representing an enumeration attribute.
  *
- * @param <E>
- *            The enumeration type.
+ * @param <E> The enumeration type.
  */
 public class EnumerationAttribute<E extends AttributeValueEnumeration> implements Attribute {
     /**
@@ -15,8 +14,7 @@ public class EnumerationAttribute<E extends AttributeValueEnumeration> implement
     /**
      * Constructs an attribute with an attribute value enumeration value.
      *
-     * @param value
-     *            The value of the attribute.
+     * @param value The value of the attribute.
      */
     public EnumerationAttribute(final E value) {
         this.value = value;
@@ -29,13 +27,6 @@ public class EnumerationAttribute<E extends AttributeValueEnumeration> implement
      */
     @Override
     public String asString() {
-        String valueString = value.toString().toLowerCase();
-        while (valueString.contains("_")) {
-            int underscoreIndex = valueString.indexOf("_");
-            String lowerCaseLetter = valueString.substring(underscoreIndex + 1, underscoreIndex + 2);
-            String upperCaseLetter = lowerCaseLetter.toUpperCase();
-            valueString = valueString.replaceAll("_" + lowerCaseLetter, upperCaseLetter);
-        }
-        return valueString;
+        return value.asString();
     }
 }

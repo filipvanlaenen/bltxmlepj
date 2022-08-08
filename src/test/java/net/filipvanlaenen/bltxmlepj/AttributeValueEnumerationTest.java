@@ -5,9 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 /**
- * Unit tests on the <code>EnumerationAttribute</code> class.
+ * Unit tests on the <code>AttributeValueEnumeration</code> class.
  */
-public class EnumerationAttributeTest {
+public class AttributeValueEnumerationTest {
     /**
      * Local enumeration for testing purposes.
      */
@@ -15,7 +15,11 @@ public class EnumerationAttributeTest {
         /**
          * Simple value.
          */
-        FOO
+        FOO,
+        /**
+         * Composed value.
+         */
+        FOO_BAR
     }
 
     /**
@@ -23,6 +27,14 @@ public class EnumerationAttributeTest {
      */
     @Test
     public void shouldExportAnEnumerationValueCorrectly() {
-        assertEquals("foo", new EnumerationAttribute<MyEnumeration>(MyEnumeration.FOO).asString());
+        assertEquals("foo", MyEnumeration.FOO.asString());
+    }
+
+    /**
+     * Verifies that a composed enumeration value is exported correctly.
+     */
+    @Test
+    public void shouldExportAComposedEnumerationValueCorrectly() {
+        assertEquals("fooBar", MyEnumeration.FOO_BAR.asString());
     }
 }
