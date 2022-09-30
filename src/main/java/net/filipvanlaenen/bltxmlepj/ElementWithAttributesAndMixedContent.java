@@ -17,6 +17,22 @@ public abstract class ElementWithAttributesAndMixedContent extends AbstractEleme
     private final List<Object> parts = new ArrayList<Object>();
 
     /**
+     * Default constructor.
+     */
+    protected ElementWithAttributesAndMixedContent() {
+    }
+
+    /**
+     * Constructs an element with a string as its content.
+     *
+     * @param content A string.
+     */
+    protected ElementWithAttributesAndMixedContent(final String content) {
+        parts.add(content);
+        containsElementsOnly = false;
+    }
+
+    /**
      * Adds an element to the list of parts.
      *
      * @param element The element to be added.
