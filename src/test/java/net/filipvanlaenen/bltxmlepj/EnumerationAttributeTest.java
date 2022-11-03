@@ -11,7 +11,7 @@ public class EnumerationAttributeTest {
     /**
      * Local enumeration for testing purposes.
      */
-    private enum MyEnumeration implements AttributeValueEnumeration {
+    private enum MyEnumeration implements CamelCaseAttributeValueEnumeration {
         /**
          * Simple value.
          */

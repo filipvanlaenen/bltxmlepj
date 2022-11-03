@@ -5,13 +5,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 /**
- * Unit tests on the <code>AttributeValueEnumeration</code> class.
+ * Unit tests on the <code>KebabCaseAttributeValueEnumeration</code> class.
  */
-public class AttributeValueEnumerationTest {
+public class KebabCaseAttributeValueEnumerationTest {
     /**
      * Local enumeration for testing purposes.
      */
-    private enum MyEnumeration implements AttributeValueEnumeration {
+    private enum MyEnumeration implements KebabCaseAttributeValueEnumeration {
         /**
          * Simple value.
          */
@@ -35,6 +35,6 @@ public class AttributeValueEnumerationTest {
      */
     @Test
     public void shouldExportAComposedEnumerationValueCorrectly() {
-        assertEquals("fooBar", MyEnumeration.FOO_BAR.asString());
+        assertEquals("foo-bar", MyEnumeration.FOO_BAR.asString());
     }
 }
