@@ -7,11 +7,11 @@ import org.junit.jupiter.api.Test;
 /**
  * Unit tests on the <code>ElementWithAttributes</code> class.
  */
-public class ElementWithAttributesTest {
+public class EmptyElementTest {
     /**
      * Local subclass of <code>ElementWithAttributes</code> for testing purposes.
      */
-    private static final class MyElementWithAttributes extends ElementWithAttributes {
+    private static final class MyElementWithAttributes extends EmptyElement {
         @Override
         public String getElementName() {
             return "e";

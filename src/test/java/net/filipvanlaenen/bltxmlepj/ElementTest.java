@@ -31,13 +31,4 @@ public class ElementTest {
         Element element = new MyElement();
         assertEquals("foo", element.asString());
     }
-
-    /**
-     * Tests that <code>xmlEscape</code> escapes correctly.
-     */
-    @Test
-    void xmlEscapeEscapesCorrectly() {
-        Element element = new MyElement();
-        assertEquals("&amp;&lt;&gt;", element.xmlEscape("&<>"));
-    }
 }

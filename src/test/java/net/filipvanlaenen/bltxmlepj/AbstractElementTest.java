@@ -7,12 +7,11 @@ import org.junit.jupiter.api.Test;
 /**
  * Unit tests on the <code>AbstractElementWithAttributes</code> interface.
  */
-public class AbstractElementWithAttributesTest {
+public class AbstractElementTest {
     /**
-     * Local subclass of <code>AbstractElementWithAttributes</code> for testing
-     * purposes.
+     * Local subclass of <code>AbstractElementWithAttributes</code> for testing purposes.
      */
-    private static final class MyAbstractElementWithAttributes extends AbstractElementWithAttributes {
+    private static final class MyAbstractElementWithAttributes extends AbstractElement {
         @Override
         public String asString(final String indent) {
             return null;
@@ -25,8 +24,7 @@ public class AbstractElementWithAttributesTest {
     }
 
     /**
-     * Verifies that a newly created Attributes instance is exported as an empty
-     * string.
+     * Verifies that a newly created Attributes instance is exported as an empty string.
      */
     @Test
     public void newAttributesInstanceShouldBeExportedAsAnEmptyString() {
@@ -34,26 +32,33 @@ public class AbstractElementWithAttributesTest {
     }
 
     /**
-     * Verifies that when an attribute is added, the attributes instance is exported
-     * correctly.
+     * Verifies that when an attribute is added, the attributes instance is exported correctly.
      */
     @Test
     public void attributesWithAnAttributeShouldBeExportedCorrectly() {
-        AbstractElementWithAttributes element = new MyAbstractElementWithAttributes();
+        AbstractElement element = new MyAbstractElementWithAttributes();
         element.addStringAttribute("foo", "bar");
         assertEquals(" foo=\"bar\"", element.getAttributesAsString());
     }
 
     /**
-     * Verifies that when many attributes are added, the attributes instance is
-     * exported correctly.
+     * Verifies that when many attributes are added, the attributes instance is exported correctly.
      */
     @Test
     public void attributesWithManyAttributesShouldBeExportedCorrectly() {
-        AbstractElementWithAttributes element = new MyAbstractElementWithAttributes();
+        AbstractElement element = new MyAbstractElementWithAttributes();
         element.addStringAttribute("foo", "bar");
         element.addStringAttribute("boo", "baz");
         element.addStringAttribute("shoo", "qux");
         assertEquals(" boo=\"baz\" foo=\"bar\" shoo=\"qux\"", element.getAttributesAsString());
+    }
+
+    /**
+     * Tests that <code>xmlEscape</code> escapes correctly.
+     */
+    @Test
+    void xmlEscapeEscapesCorrectly() {
+        AbstractElement element = new MyAbstractElementWithAttributes();
+        assertEquals("&amp;&lt;&gt;", element.xmlEscape("&<>"));
     }
 }

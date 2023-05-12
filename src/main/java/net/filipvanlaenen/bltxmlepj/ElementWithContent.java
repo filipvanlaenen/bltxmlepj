@@ -3,7 +3,7 @@ package net.filipvanlaenen.bltxmlepj;
 /**
  * Abstract class providing common functionality for element types with content.
  */
-public abstract class ElementWithContent implements Element {
+public abstract class ElementWithContent extends AbstractElement {
     /**
      * The content.
      */
@@ -12,8 +12,7 @@ public abstract class ElementWithContent implements Element {
     /**
      * Constructs an element with a string as its content.
      *
-     * @param content
-     *            A string.
+     * @param content A string.
      */
     protected ElementWithContent(final String content) {
         this.content = content;
@@ -21,10 +20,20 @@ public abstract class ElementWithContent implements Element {
 
     @Override
     public final String asString(final String indent) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(indent);
+        sb.append("<");
+        sb.append(getElementName());
+        sb.append(getAttributesAsString());
         if (content == null || content.isEmpty()) {
-            return indent + "<" + getElementName() + "/>";
+            sb.append("/>");
         } else {
-            return indent + "<" + getElementName() + ">" + xmlEscape(content) + "</" + getElementName() + ">";
+            sb.append(">");
+            sb.append(xmlEscape(content));
+            sb.append("</");
+            sb.append(getElementName());
+            sb.append(">");
         }
+        return sb.toString();
     }
 }

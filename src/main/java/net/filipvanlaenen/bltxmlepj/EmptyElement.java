@@ -1,11 +1,9 @@
 package net.filipvanlaenen.bltxmlepj;
 
 /**
- * Abstract class providing common functionality for element types with
- * attributes.
+ * Abstract class providing common functionality for empty element types.
  */
-
-public abstract class ElementWithAttributes extends AbstractElementWithAttributes implements Element {
+public abstract class EmptyElement extends AbstractElement {
     @Override
     public final String asString(final String indent) {
         StringBuilder sb = new StringBuilder();

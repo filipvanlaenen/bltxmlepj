@@ -5,13 +5,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 /**
- * Unit tests on the <code>ElementWithElements</code> class.
+ * Unit tests on the <code>ElementWithAttributesAndElements</code> class.
  */
 public class ElementWithElementsTest {
     /**
-     * Local subclass of <code>ElementWithElements</code> for testing purposes.
+     * Local subclass of <code>ElementWithAttributesAndElements</code> for testing
+     * purposes.
      */
-    private class MyElementWithElements extends ElementWithElements {
+    private class MyElementWithAttributesAndElements extends ElementWithElements {
         @Override
         public String getElementName() {
             return "e";
@@ -19,21 +20,42 @@ public class ElementWithElementsTest {
     }
 
     /**
-     * Tests that an element without elements is exported correctly.
+     * Tests that an element without attributes or elements is exported correctly.
      */
     @Test
-    void elementWithoutElementsIsExportedCorrectly() {
-        ElementWithElements element = new MyElementWithElements();
+    void elementWithoutAttributesOrElementsIsExportedCorrectly() {
+        MyElementWithAttributesAndElements element = new MyElementWithAttributesAndElements();
         assertEquals("<e/>", element.asString());
     }
 
     /**
-     * Tests that an element with an element is exported correctly.
+     * Tests that an element with attributes is exported correctly.
      */
     @Test
-    void elementWithElementIsExportedCorrectly() {
-        MyElementWithElements element = new MyElementWithElements();
-        element.addElement(new MyElementWithElements());
+    void elementWithAttributesIsExportedCorrectly() {
+        MyElementWithAttributesAndElements element = new MyElementWithAttributesAndElements();
+        element.addStringAttribute("bar", "baz");
+        assertEquals("<e bar=\"baz\"/>", element.asString());
+    }
+
+    /**
+     * Tests that an element with elements is exported correctly.
+     */
+    @Test
+    void elementWithElementsIsExportedCorrectly() {
+        MyElementWithAttributesAndElements element = new MyElementWithAttributesAndElements();
+        element.addElement(new MyElementWithAttributesAndElements());
         assertEquals("<e>\n  <e/>\n</e>", element.asString());
+    }
+
+    /**
+     * Tests that an element with attributes and elements is exported correctly.
+     */
+    @Test
+    void elementWithAttributesAndElementsIsExportedCorrectly() {
+        MyElementWithAttributesAndElements element = new MyElementWithAttributesAndElements();
+        element.addStringAttribute("bar", "baz");
+        element.addElement(new MyElementWithAttributesAndElements());
+        assertEquals("<e bar=\"baz\">\n  <e/>\n</e>", element.asString());
     }
 }

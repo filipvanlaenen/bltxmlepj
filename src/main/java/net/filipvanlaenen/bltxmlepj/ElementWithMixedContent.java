@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Abstract class providing common functionality for element types with mixed content.
  */
-public abstract class ElementWithMixedContent implements Element {
+public abstract class ElementWithMixedContent extends AbstractElement {
     /**
      * A flag indicating whether the parts contain elements only.
      */
@@ -37,7 +37,7 @@ public abstract class ElementWithMixedContent implements Element {
      *
      * @param element The element to be added.
      */
-    protected final void addElement(final Element element) {
+    protected final void addElement(final AbstractElement element) {
         parts.add(element);
     }
 
@@ -57,6 +57,7 @@ public abstract class ElementWithMixedContent implements Element {
         sb.append(indent);
         sb.append("<");
         sb.append(getElementName());
+        sb.append(getAttributesAsString());
         if (parts.isEmpty()) {
             sb.append("/>");
         } else {
@@ -69,7 +70,7 @@ public abstract class ElementWithMixedContent implements Element {
                 if (part instanceof String) {
                     sb.append(xmlEscape((String) part));
                 } else {
-                    sb.append(((Element) part).asString(nextIndent));
+                    sb.append(((AbstractElement) part).asString(nextIndent));
                     if (containsElementsOnly) {
                         sb.append("\n");
                     }
