@@ -35,10 +35,9 @@ public class AbstractElementTest {
      * Verifies that when an attribute is added, the attributes instance is exported correctly.
      */
     @Test
-    public void attributesWithAnAttributeShouldBeExportedCorrectly() {
-        AbstractElement element = new MyAbstractElement();
-        element.addStringAttribute("foo", "bar");
-        assertEquals(" foo=\"bar\"", element.getAttributesAsString());
+    public void anIdAttributeShouldBeExportedCorrectly() {
+        AbstractElement element = new MyAbstractElement().id("foo");
+        assertEquals(" id=\"foo\"", element.getAttributesAsString());
     }
 
     /**
