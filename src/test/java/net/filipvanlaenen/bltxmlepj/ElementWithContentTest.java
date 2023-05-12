@@ -5,21 +5,19 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 /**
- * Unit tests on the <code>ElementWithAttributesAndContent</code> class.
+ * Unit tests on the <code>ElementWithContent</code> class.
  */
 public class ElementWithContentTest {
     /**
-     * Local subclass of <code>ElementWithAttributesAndContent</code> for testing
-     * purposes.
+     * Local subclass of <code>ElementWithContent</code> for testing purposes.
      */
-    private static final class MyElementWithAttributesAndContent extends ElementWithContent {
+    private static final class MyElementWithContent extends ElementWithContent {
         /**
          * Constructs an element with a string as its content.
          *
-         * @param content
-         *            A string.
+         * @param content A string.
          */
-        private MyElementWithAttributesAndContent(final String content) {
+        private MyElementWithContent(final String content) {
             super(content);
         }
 
@@ -34,7 +32,7 @@ public class ElementWithContentTest {
      */
     @Test
     void elementWithAnAttributeAndContentIsExportedCorrectly() {
-        ElementWithContent element = new MyElementWithAttributesAndContent("foo");
+        ElementWithContent element = new MyElementWithContent("foo");
         element.addStringAttribute("bar", "baz");
         assertEquals("<e bar=\"baz\">foo</e>", element.asString());
     }
@@ -44,7 +42,7 @@ public class ElementWithContentTest {
      */
     @Test
     void elementWithAnAttributeButWithoutContentIsExportedCorrectly() {
-        ElementWithContent element = new MyElementWithAttributesAndContent(null);
+        ElementWithContent element = new MyElementWithContent(null);
         element.addStringAttribute("bar", "baz");
         assertEquals("<e bar=\"baz\"/>", element.asString());
     }
@@ -54,7 +52,7 @@ public class ElementWithContentTest {
      */
     @Test
     void elementWithContentIsExportedCorrectly() {
-        ElementWithContent element = new MyElementWithAttributesAndContent("foo");
+        ElementWithContent element = new MyElementWithContent("foo");
         assertEquals("<e>foo</e>", element.asString());
     }
 
@@ -63,7 +61,7 @@ public class ElementWithContentTest {
      */
     @Test
     void elementWithoutContentIsExportedCorrectly() {
-        ElementWithContent element = new MyElementWithAttributesAndContent(null);
+        ElementWithContent element = new MyElementWithContent(null);
         assertEquals("<e/>", element.asString());
     }
 }

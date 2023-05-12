@@ -5,13 +5,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 /**
- * Unit tests on the <code>ElementWithAttributesAndMixedContent</code> class.
+ * Unit tests on the <code>ElementWithMixedContent</code> class.
  */
 public class ElementWithMixedContentTest {
     /**
-     * Local subclass of <code>ElementWithAttributesAndMixedContent</code> for testing purposes.
+     * Local subclass of <code>ElementWithMixedContent</code> for testing purposes.
      */
-    private class MyElementWithAttributesAndMixedContent extends ElementWithMixedContent {
+    private class MyElementWithMixedContent extends ElementWithMixedContent {
         @Override
         public String getElementName() {
             return "e";
@@ -23,7 +23,7 @@ public class ElementWithMixedContentTest {
      */
     @Test
     void elementWithoutAttributesOrMixedContentIsExportedCorrectly() {
-        MyElementWithAttributesAndMixedContent element = new MyElementWithAttributesAndMixedContent();
+        MyElementWithMixedContent element = new MyElementWithMixedContent();
         assertEquals("<e/>", element.asString());
     }
 
@@ -32,7 +32,7 @@ public class ElementWithMixedContentTest {
      */
     @Test
     void elementWithAttributesIsExportedCorrectly() {
-        MyElementWithAttributesAndMixedContent element = new MyElementWithAttributesAndMixedContent();
+        MyElementWithMixedContent element = new MyElementWithMixedContent();
         element.addStringAttribute("bar", "baz");
         assertEquals("<e bar=\"baz\"/>", element.asString());
     }
@@ -42,8 +42,8 @@ public class ElementWithMixedContentTest {
      */
     @Test
     void elementWithAnElementIsExportedCorrectly() {
-        MyElementWithAttributesAndMixedContent element = new MyElementWithAttributesAndMixedContent();
-        element.addElement(new MyElementWithAttributesAndMixedContent());
+        MyElementWithMixedContent element = new MyElementWithMixedContent();
+        element.addElement(new MyElementWithMixedContent());
         assertEquals("<e>\n  <e/>\n</e>", element.asString());
     }
 
@@ -52,7 +52,7 @@ public class ElementWithMixedContentTest {
      */
     @Test
     void elementWithContentIsExportedCorrectly() {
-        MyElementWithAttributesAndMixedContent element = new MyElementWithAttributesAndMixedContent();
+        MyElementWithMixedContent element = new MyElementWithMixedContent();
         element.addContent("foo");
         assertEquals("<e>foo</e>", element.asString());
     }
@@ -62,8 +62,8 @@ public class ElementWithMixedContentTest {
      */
     @Test
     void elementWithElementWithContentIsExportedCorrectly() {
-        MyElementWithAttributesAndMixedContent element = new MyElementWithAttributesAndMixedContent();
-        MyElementWithAttributesAndMixedContent subelement = new MyElementWithAttributesAndMixedContent();
+        MyElementWithMixedContent element = new MyElementWithMixedContent();
+        MyElementWithMixedContent subelement = new MyElementWithMixedContent();
         subelement.addContent("foo");
         element.addElement(subelement);
         assertEquals("<e>\n  <e>foo</e>\n</e>", element.asString());
@@ -74,9 +74,9 @@ public class ElementWithMixedContentTest {
      */
     @Test
     void elementWithMixedContentIsExportedCorrectly() {
-        MyElementWithAttributesAndMixedContent element = new MyElementWithAttributesAndMixedContent();
+        MyElementWithMixedContent element = new MyElementWithMixedContent();
         element.addContent("foo");
-        element.addElement(new MyElementWithAttributesAndMixedContent());
+        element.addElement(new MyElementWithMixedContent());
         element.addContent("foo");
         assertEquals("<e>foo<e/>foo</e>", element.asString());
     }
@@ -86,9 +86,9 @@ public class ElementWithMixedContentTest {
      */
     @Test
     void elementWithAttributesAndElementsIsExportedCorrectly() {
-        MyElementWithAttributesAndMixedContent element = new MyElementWithAttributesAndMixedContent();
+        MyElementWithMixedContent element = new MyElementWithMixedContent();
         element.addStringAttribute("bar", "baz");
-        element.addElement(new MyElementWithAttributesAndMixedContent());
+        element.addElement(new MyElementWithMixedContent());
         assertEquals("<e bar=\"baz\">\n  <e/>\n</e>", element.asString());
     }
 }

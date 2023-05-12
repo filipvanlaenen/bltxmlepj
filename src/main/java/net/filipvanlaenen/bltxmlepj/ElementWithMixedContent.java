@@ -37,7 +37,7 @@ public abstract class ElementWithMixedContent extends AbstractElement {
      *
      * @param element The element to be added.
      */
-    protected final void addElement(final AbstractElement element) {
+    protected final void addElement(final Element element) {
         parts.add(element);
     }
 
@@ -70,7 +70,7 @@ public abstract class ElementWithMixedContent extends AbstractElement {
                 if (part instanceof String) {
                     sb.append(xmlEscape((String) part));
                 } else {
-                    sb.append(((AbstractElement) part).asString(nextIndent));
+                    sb.append(((Element) part).asString(nextIndent));
                     if (containsElementsOnly) {
                         sb.append("\n");
                     }

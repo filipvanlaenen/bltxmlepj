@@ -5,13 +5,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 /**
- * Unit tests on the <code>AbstractElementWithAttributes</code> interface.
+ * Unit tests on the <code>AbstractElement</code> interface.
  */
 public class AbstractElementTest {
     /**
-     * Local subclass of <code>AbstractElementWithAttributes</code> for testing purposes.
+     * Local subclass of <code>AbstractElement</code> for testing purposes.
      */
-    private static final class MyAbstractElementWithAttributes extends AbstractElement {
+    private static final class MyAbstractElement extends AbstractElement {
         @Override
         public String asString(final String indent) {
             return null;
@@ -28,7 +28,7 @@ public class AbstractElementTest {
      */
     @Test
     public void newAttributesInstanceShouldBeExportedAsAnEmptyString() {
-        assertEquals("", new MyAbstractElementWithAttributes().getAttributesAsString());
+        assertEquals("", new MyAbstractElement().getAttributesAsString());
     }
 
     /**
@@ -36,7 +36,7 @@ public class AbstractElementTest {
      */
     @Test
     public void attributesWithAnAttributeShouldBeExportedCorrectly() {
-        AbstractElement element = new MyAbstractElementWithAttributes();
+        AbstractElement element = new MyAbstractElement();
         element.addStringAttribute("foo", "bar");
         assertEquals(" foo=\"bar\"", element.getAttributesAsString());
     }
@@ -46,7 +46,7 @@ public class AbstractElementTest {
      */
     @Test
     public void attributesWithManyAttributesShouldBeExportedCorrectly() {
-        AbstractElement element = new MyAbstractElementWithAttributes();
+        AbstractElement element = new MyAbstractElement();
         element.addStringAttribute("foo", "bar");
         element.addStringAttribute("boo", "baz");
         element.addStringAttribute("shoo", "qux");
@@ -58,7 +58,7 @@ public class AbstractElementTest {
      */
     @Test
     void xmlEscapeEscapesCorrectly() {
-        AbstractElement element = new MyAbstractElementWithAttributes();
+        AbstractElement element = new MyAbstractElement();
         assertEquals("&amp;&lt;&gt;", element.xmlEscape("&<>"));
     }
 }

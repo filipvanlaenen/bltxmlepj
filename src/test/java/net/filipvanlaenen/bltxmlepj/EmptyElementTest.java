@@ -5,13 +5,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 /**
- * Unit tests on the <code>ElementWithAttributes</code> class.
+ * Unit tests on the <code>EmptyElement</code> class.
  */
 public class EmptyElementTest {
     /**
-     * Local subclass of <code>ElementWithAttributes</code> for testing purposes.
+     * Local subclass of <code>EmptyElement</code> for testing purposes.
      */
-    private static final class MyElementWithAttributes extends EmptyElement {
+    private static final class MyEmptyElement extends EmptyElement {
         @Override
         public String getElementName() {
             return "e";
@@ -19,12 +19,11 @@ public class EmptyElementTest {
     }
 
     /**
-     * Tests that an element with an attribute but without content is exported
-     * correctly.
+     * Tests that an element with an attribute but without content is exported correctly.
      */
     @Test
     void elementWithAnAttributeButWithoutContentIsExportedCorrectly() {
-        MyElementWithAttributes element = new MyElementWithAttributes();
+        MyEmptyElement element = new MyEmptyElement();
         element.addStringAttribute("bar", "baz");
         assertEquals("<e bar=\"baz\"/>", element.asString());
     }
@@ -34,7 +33,7 @@ public class EmptyElementTest {
      */
     @Test
     void elementWithoutContentIsExportedCorrectly() {
-        MyElementWithAttributes element = new MyElementWithAttributes();
+        MyEmptyElement element = new MyEmptyElement();
         assertEquals("<e/>", element.asString());
     }
 }

@@ -10,14 +10,14 @@ public abstract class ElementWithElements extends AbstractElement {
     /**
      * A list with the elements.
      */
-    private final List<AbstractElement> elements = new ArrayList<AbstractElement>();
+    private final List<Element> elements = new ArrayList<Element>();
 
     /**
      * Adds an element to the list of elements.
      *
      * @param element The element to be added.
      */
-    protected final void addElement(final AbstractElement element) {
+    protected final void addElement(final Element element) {
         elements.add(element);
     }
 
@@ -33,7 +33,7 @@ public abstract class ElementWithElements extends AbstractElement {
         } else {
             sb.append(">\n");
             String nextIndent = "  " + indent;
-            for (AbstractElement element : elements) {
+            for (Element element : elements) {
                 sb.append(element.asString(nextIndent));
                 sb.append("\n");
             }

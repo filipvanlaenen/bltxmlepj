@@ -5,14 +5,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 /**
- * Unit tests on the <code>ElementWithAttributesAndElements</code> class.
+ * Unit tests on the <code>ElementWithElements</code> class.
  */
 public class ElementWithElementsTest {
     /**
-     * Local subclass of <code>ElementWithAttributesAndElements</code> for testing
-     * purposes.
+     * Local subclass of <code>ElementWithElements</code> for testing purposes.
      */
-    private class MyElementWithAttributesAndElements extends ElementWithElements {
+    private class MyElementWithElements extends ElementWithElements {
         @Override
         public String getElementName() {
             return "e";
@@ -24,7 +23,7 @@ public class ElementWithElementsTest {
      */
     @Test
     void elementWithoutAttributesOrElementsIsExportedCorrectly() {
-        MyElementWithAttributesAndElements element = new MyElementWithAttributesAndElements();
+        MyElementWithElements element = new MyElementWithElements();
         assertEquals("<e/>", element.asString());
     }
 
@@ -33,7 +32,7 @@ public class ElementWithElementsTest {
      */
     @Test
     void elementWithAttributesIsExportedCorrectly() {
-        MyElementWithAttributesAndElements element = new MyElementWithAttributesAndElements();
+        MyElementWithElements element = new MyElementWithElements();
         element.addStringAttribute("bar", "baz");
         assertEquals("<e bar=\"baz\"/>", element.asString());
     }
@@ -43,8 +42,8 @@ public class ElementWithElementsTest {
      */
     @Test
     void elementWithElementsIsExportedCorrectly() {
-        MyElementWithAttributesAndElements element = new MyElementWithAttributesAndElements();
-        element.addElement(new MyElementWithAttributesAndElements());
+        MyElementWithElements element = new MyElementWithElements();
+        element.addElement(new MyElementWithElements());
         assertEquals("<e>\n  <e/>\n</e>", element.asString());
     }
 
@@ -53,9 +52,9 @@ public class ElementWithElementsTest {
      */
     @Test
     void elementWithAttributesAndElementsIsExportedCorrectly() {
-        MyElementWithAttributesAndElements element = new MyElementWithAttributesAndElements();
+        MyElementWithElements element = new MyElementWithElements();
         element.addStringAttribute("bar", "baz");
-        element.addElement(new MyElementWithAttributesAndElements());
+        element.addElement(new MyElementWithElements());
         assertEquals("<e bar=\"baz\">\n  <e/>\n</e>", element.asString());
     }
 }
