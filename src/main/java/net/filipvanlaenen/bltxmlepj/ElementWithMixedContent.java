@@ -5,8 +5,10 @@ import java.util.List;
 
 /**
  * Abstract class providing common functionality for element types with mixed content.
+ *
+ * @param <E> The subclass type.
  */
-public abstract class ElementWithMixedContent extends AbstractElement {
+public abstract class ElementWithMixedContent<E extends ElementWithMixedContent<E>> extends AbstractElement<E> {
     /**
      * A flag indicating whether the parts contain elements only.
      */

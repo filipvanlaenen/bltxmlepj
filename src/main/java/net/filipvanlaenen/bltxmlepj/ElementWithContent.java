@@ -2,8 +2,10 @@ package net.filipvanlaenen.bltxmlepj;
 
 /**
  * Abstract class providing common functionality for element types with content.
+ *
+ * @param <E> The subclass type.
  */
-public abstract class ElementWithContent extends AbstractElement {
+public abstract class ElementWithContent<E extends ElementWithContent<E>> extends AbstractElement<E> {
     /**
      * The content.
      */
