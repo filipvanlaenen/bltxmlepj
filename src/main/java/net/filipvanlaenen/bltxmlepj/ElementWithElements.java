@@ -5,8 +5,10 @@ import java.util.List;
 
 /**
  * Abstract class providing common functionality for element types with elements.
+ *
+ * @param <E> The subclass type.
  */
-public abstract class ElementWithElements extends AbstractElement {
+public abstract class ElementWithElements<E extends ElementWithElements<E>> extends AbstractElement<E> {
     /**
      * A list with the elements.
      */
