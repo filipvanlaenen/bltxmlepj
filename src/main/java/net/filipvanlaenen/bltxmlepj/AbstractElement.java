@@ -1,12 +1,10 @@
 package net.filipvanlaenen.bltxmlepj;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.Comparator;
+
+import net.filipvanlaenen.kolektoj.ModifiableMap;
+import net.filipvanlaenen.kolektoj.OrderedCollection;
+import net.filipvanlaenen.kolektoj.array.OrderedArrayCollection;
 
 /**
  * Abstract base class for all element classes.
@@ -17,7 +15,7 @@ abstract class AbstractElement<E extends AbstractElement<E>> implements Element 
     /**
      * A map with all the attributes.
      */
-    private final Map<String, Attribute> attributes = new HashMap<String, Attribute>();
+    private final ModifiableMap<String, Attribute> attributes = ModifiableMap.empty();
 
     /**
      * Adds an attribute to the set of attributes.
@@ -70,11 +68,9 @@ abstract class AbstractElement<E extends AbstractElement<E>> implements Element 
             return "";
         }
         StringBuilder sb = new StringBuilder();
-        Set<String> attributeNameSet = new HashSet<String>();
-        attributeNameSet.addAll(attributes.keySet());
-        List<String> attributeNameList = new ArrayList<String>(attributeNameSet);
-        Collections.sort(attributeNameList);
-        for (String attributeName : attributeNameList) {
+        OrderedCollection<String> attributeNames =
+                new OrderedArrayCollection<String>(attributes.getKeys(), Comparator.naturalOrder());
+        for (String attributeName : attributeNames) {
             sb.append(" ");
             sb.append(attributeName);
             sb.append("=\"");

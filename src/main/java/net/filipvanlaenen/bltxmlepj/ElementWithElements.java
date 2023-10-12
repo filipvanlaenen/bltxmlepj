@@ -1,7 +1,6 @@
 package net.filipvanlaenen.bltxmlepj;
 
-import java.util.ArrayList;
-import java.util.List;
+import net.filipvanlaenen.kolektoj.ModifiableOrderedCollection;
 
 /**
  * Abstract class providing common functionality for element types with elements.
@@ -12,7 +11,7 @@ public abstract class ElementWithElements<E extends ElementWithElements<E>> exte
     /**
      * A list with the elements.
      */
-    private final List<Element> elements = new ArrayList<Element>();
+    private final ModifiableOrderedCollection<Element> elements = ModifiableOrderedCollection.empty();
 
     /**
      * Adds an element to the list of elements.

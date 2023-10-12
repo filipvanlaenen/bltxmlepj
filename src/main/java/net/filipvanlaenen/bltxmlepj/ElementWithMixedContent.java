@@ -1,7 +1,6 @@
 package net.filipvanlaenen.bltxmlepj;
 
-import java.util.ArrayList;
-import java.util.List;
+import net.filipvanlaenen.kolektoj.ModifiableOrderedCollection;
 
 /**
  * Abstract class providing common functionality for element types with mixed content.
@@ -16,7 +15,7 @@ public abstract class ElementWithMixedContent<E extends ElementWithMixedContent<
     /**
      * A list with the parts.
      */
-    private final List<Object> parts = new ArrayList<Object>();
+    private final ModifiableOrderedCollection<Object> parts = ModifiableOrderedCollection.empty();
 
     /**
      * Default constructor.
