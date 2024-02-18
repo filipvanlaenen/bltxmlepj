@@ -4,7 +4,7 @@ import java.util.Comparator;
 
 import net.filipvanlaenen.kolektoj.ModifiableMap;
 import net.filipvanlaenen.kolektoj.OrderedCollection;
-import net.filipvanlaenen.kolektoj.array.OrderedArrayCollection;
+import net.filipvanlaenen.kolektoj.sortedtree.SortedTreeCollection;
 
 /**
  * Abstract base class for all element classes.
@@ -69,7 +69,7 @@ abstract class AbstractElement<E extends AbstractElement<E>> implements Element 
         }
         StringBuilder sb = new StringBuilder();
         OrderedCollection<String> attributeNames =
-                new OrderedArrayCollection<String>(attributes.getKeys(), Comparator.naturalOrder());
+                new SortedTreeCollection<String>(Comparator.naturalOrder(), attributes.getKeys());
         for (String attributeName : attributeNames) {
             sb.append(" ");
             sb.append(attributeName);
