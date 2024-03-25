@@ -2,9 +2,8 @@ package net.filipvanlaenen.bltxmlepj;
 
 import java.util.Comparator;
 
-import net.filipvanlaenen.kolektoj.ModifiableMap;
-import net.filipvanlaenen.kolektoj.OrderedCollection;
-import net.filipvanlaenen.kolektoj.sortedtree.SortedTreeCollection;
+import net.filipvanlaenen.kolektoj.Map.Entry;
+import net.filipvanlaenen.kolektoj.ModifiableSortedMap;
 
 /**
  * Abstract base class for all element classes.
@@ -15,7 +14,13 @@ abstract class AbstractElement<E extends AbstractElement<E>> implements Element 
     /**
      * A map with all the attributes.
      */
-    private final ModifiableMap<String, Attribute> attributes = ModifiableMap.empty();
+    private final ModifiableSortedMap<String, Attribute> attributes =
+            ModifiableSortedMap.empty(new Comparator<String>() {
+                @Override
+                public int compare(String s1, String s2) {
+                    return s1.compareTo(s2);
+                }
+            });
 
     /**
      * Adds an attribute to the set of attributes.
@@ -68,13 +73,11 @@ abstract class AbstractElement<E extends AbstractElement<E>> implements Element 
             return "";
         }
         StringBuilder sb = new StringBuilder();
-        OrderedCollection<String> attributeNames =
-                new SortedTreeCollection<String>(Comparator.naturalOrder(), attributes.getKeys());
-        for (String attributeName : attributeNames) {
+        for (Entry<String, Attribute> attribute : attributes) {
             sb.append(" ");
-            sb.append(attributeName);
+            sb.append(attribute.key());
             sb.append("=\"");
-            sb.append(xmlEscape(attributes.get(attributeName).asString()));
+            sb.append(xmlEscape(attribute.value().asString()));
             sb.append("\"");
         }
         return sb.toString();
