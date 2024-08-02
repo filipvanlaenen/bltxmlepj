@@ -17,7 +17,7 @@ abstract class AbstractElement<E extends AbstractElement<E>> implements Element 
     private final ModifiableSortedMap<String, Attribute> attributes =
             ModifiableSortedMap.empty(new Comparator<String>() {
                 @Override
-                public int compare(String s1, String s2) {
+                public int compare(final String s1, final String s2) {
                     return s1.compareTo(s2);
                 }
             });
