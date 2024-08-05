@@ -25,7 +25,7 @@ Java project by adding the following dependency in the project's POM file:
   <dependency>
     <groupId>net.filipvanlaenen</groupId>
     <artifactId>bltxmlepj</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0</version>
   </dependency>
 ```
 
